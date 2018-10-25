@@ -3,60 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>github-ynov-vue</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
-        <h1>Application Github Ynov</h1>
-        <div v-for="nickname in githubNicknames">
-            <p>{{ nickname.name }}</p>
+       <h1>Application Github Ynov</h1>
+        <div v-for="nickname in githubInfos" class="github-names">
+            <p>Github: {{ nickname.name }}</p>
+
+        </div>
+        <div v-for="item in info">
+            <p>{{ item.full_name }}</p>
         </div>
     </div>
-    <input type="button" id=""/>
-    <p>{{ info }}</p>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-
-    var vue = new Vue({
-        el: '#app',
-        data() {
-            return {
-                info: null,
-                githubNicknames: [
-                    { name: "Killy85" },
-                    { name: "Nair0fl" },
-                    { name: "raphaelCharre" },
-                    { name: "mathiasLoiret" },
-                    { name: "thomaspich"},
-                    { name: "TeofiloJ" },
-                    { name: "Grigusky" },
-                    { name: "Dakistos" },
-                    { name: "mael61" },
-                    { name: "KevinPautonnier" },
-                    { name: "BenoitCochet" },
-                    { name: "sfongue" },
-                    { name: "ClementCaillaud" },
-                    { name: "gfourny" },
-                    { name: "Mokui" },
-                    { name: "LordInateur" },
-                    { name: "AntoineGOSSET" },
-                    { name: "etienneYnov" },
-                    { name: "Coblestone" },
-                    { name: "AlexDesvallees" },
-                    { name: "rudy8530" },
-                    { name: "benjaminbra" },
-                    { name: "mael61" },
-                    { name: "alixnzt" },
-                ]
-            }
-        },
-        mounted () {
-            axios
-                .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-                .then(response => (this.info = response))
-            }
-        })
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
