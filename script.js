@@ -1,49 +1,65 @@
+var githubNames = ["Killy85",  "Nair0fl",  "raphaelCharre", "mathiasLoiret", "thomaspich", "TeofiloJ", "Grigusky", "Dakistos", "mael61", "KevinPautonnier", "BenoitCochet", "sfongue", "ClementCaillaud", "gfourny", "Mokui", "LordInateur", "AntoineGOSSET", "etienneYnov", "Coblestone", "AlexDesvallees", "rudy8530", "benjaminbra", "mael61", "alixnzt"];
+
+var repoAddress = "https://api.github.com/repos/";
+var userAddress = "https://api.github.com/users/";
+var repoName = "github-ynov-vue";
+
+
 var vue = new Vue({
     el: '#app' ,
     methods: {
-        getUserCommit: function (userName){
-            var result;
-            axios
-                .get('https://api.github.com/users/'+userName+'/github-ynov-vue/commits/master')
-                .then(response => (result = response.data));
 
-            return result
+        getCommits: function(){
+            for (user in githubNames){
+
+                axios
+                    .get(repoAddress+this.userSelected[user]+'/'+repoName+'/commits')
+                    .then(function (response){
+                        for (result in response){
+
+                         }
+                    });
+            }
+        },
+
+        getGithubAccounts: function(){
+            var users = [];
+
+            var newAccount = {};
+
+            for (user in this.userSelected){
+
+                newAccount.name = this.userSelected[user];
+
+                axios
+                    .get(repoAddress+this.userSelected[user]+'/'+repoName+'/commits')
+                    .then(function (response){
+
+                        for (result in response){
+                            //users.commit.append(result);
+                        }
+
+                    });
+
+                users += newAccount;
+            }
+            this.githubAccounts = users;
+            console.log(this.githubAccounts)
         }
-    },
-    data() {
-        return {
-            info: null,
-            githubInfos: [
-                { name: "Killy85", commit: getUserCommit("Killy85")},
-                { name: "Nair0fl", commit: getUserCommit("Nair0fl") },
-                { name: "raphaelCharre", commit: getUserCommit("raphaelCharre") },
-                { name: "mathiasLoiret", commit: getUserCommit("mathiasLoiret") },
-                { name: "thomaspich", commit: getUserCommit("thomaspich") },
-                { name: "TeofiloJ", commit: getUserCommit("TeofiloJ") },
-                { name: "Grigusky", commit: getUserCommit("Grigusky") },
-                { name: "Dakistos", commit: getUserCommit("Dakistos") },
-                { name: "mael61", commit: getUserCommit("mael61") },
-                { name: "KevinPautonnier", commit: getUserCommit("KevinPautonnier") },
-                { name: "BenoitCochet", commit: getUserCommit("BenoitCochet") },
-                { name: "sfongue", commit: getUserCommit("sfongue") },
-                { name: "ClementCaillaud", commit: getUserCommit("ClementCaillaud") },
-                { name: "gfourny", commit: getUserCommit("gfourny") },
-                { name: "Mokui", commit: getUserCommit("Mokui") },
-                { name: "LordInateur", commit: getUserCommit("LordInateur") },
-                { name: "AntoineGOSSET", commit: getUserCommit("AntoineGOSSET") },
-                { name: "etienneYnov", commit: getUserCommit("etienneYnov") },
-                { name: "Coblestone", commit: getUserCommit("Coblestone") },
-                { name: "AlexDesvallees", commit: getUserCommit("AlexDesvallees") },
-                { name: "rudy8530", commit: getUserCommit("rudy8530") },
-                { name: "benjaminbra", commit: getUserCommit("benjaminbra") },
-                { name: "mael61", commit: getUserCommit("mael61") },
-                { name: "alixnzt", commit: getUserCommit("alixnzt") },
-            ],
 
-        }
-    },
-    created () {
 
+    },
+    data: {
+        githubAccounts: [],
+        usersName: githubNames,
+        dateDebut: "",
+        dateFin: "",
+        userSelected: githubNames,
+
+    }, created(){
+
+        this.getGithubAccounts();
 
     }
+
 });

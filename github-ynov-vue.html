@@ -8,12 +8,20 @@
 <body>
     <div id="app">
        <h1>Application Github Ynov</h1>
-        <div v-for="nickname in githubInfos" class="github-names">
-            <p>Github: {{ nickname.name }}</p>
+        <div class="filters">
+            <select>
+                <!--<input v-model="projet">-->
 
+            </select>
+            <div>
+                <!-- Date Picker -->
+            </div>
         </div>
-        <div v-for="item in info">
-            <p>{{ item.full_name }}</p>
+        <div v-for="user in githubAccounts" class="github-names">
+            <p>Github: {{ user.name }}</p>
+            <!--<div v-for="commit in getCommits()">-->
+                <!--<p>{{ commit }}</p>-->
+            <!--</div>-->
         </div>
     </div>
 
