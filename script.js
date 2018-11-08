@@ -8,44 +8,32 @@ var client_id ="74d5bc2e581ebb60dcc7";
 var client_secret ="45de24cc6d2e2dfa6bdff1fc59a0af22e4409b4a";
 
 
+
 var vue = new Vue({
-    el: '#app' ,
-    methods: {
-
-        getCommits: function () {
-
-            for (user in this.userSelected) {
-
-                var newAccount = {};
-                newAccount.name = githubNames[user];
-                newAccount.commit = [];
-
-                console.log(user);
-                axios
-                    .get(repoAddress + githubNames[user] + '/' + repoName + '/commits?client_id=' + client_id + '&client_secret=' + client_secret)
-                    .then(function (response) {
-
-                        console.log(response);
-
-                        for (result in response) {
-                            newAccount.commit += result;
-                        }
-
-                    });
-                this.githubAccounts += newAccount
-            }
-
-        },
-    },
+    el: '#app',
     data: {
-        githubAccounts: [],
-        usersName: githubNames,
-        dateDebut: "",
-        dateFin: "",
-        userSelected: githubNames,
+        names: githubNames,
 
+    },
+
+    methods: {
+        getCommits: function(user){
+
+            var value;
+
+            axios
+                .get(repoAddress + user + '/' + repoName + '/commits?client_id=' + client_id + '&client_secret=' + client_secret)
+                .then(function (response) {
+                    //console.log(response.data);
+                    value = response.data;
+                    console.log(value)
+                });
+
+            return "hello";
+
+        }
     }, created(){
-        this.getCommits();
-    }
-});
 
+    }
+    
+});

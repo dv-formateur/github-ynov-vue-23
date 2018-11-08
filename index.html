@@ -10,20 +10,17 @@
     <div id="app">
        <h1>Application Github Ynov</h1>
         <div class="filters">
-            <select>
-                <!--<input v-model="projet">-->
-
-            </select>
+            <!-- choose dev -->
+            <!-- <input> -->
             <div>
                 <!-- Date Picker -->
             </div>
         </div>
-        {{ githubAccounts }}
-        <div v-for="item in githubAccounts" class="github-names">
-            <p>Github: {{ item.name }}</p>
-           <!-- <div v-for="commit in getCommits()">
+        <div v-for="item in names" class="github-names">
+            <p>Github: {{ item }}</p>
+           <div v-for="commit in getCommits(item)">
                 <p>{{ commit }}</p>
-            </div> -->
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
