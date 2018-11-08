@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>github-ynov-vue</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
     <div id="app">
@@ -17,14 +18,14 @@
                 <!-- Date Picker -->
             </div>
         </div>
-        <div v-for="user in githubAccounts" class="github-names">
-            <p>Github: {{ user.name }}</p>
-            <!--<div v-for="commit in getCommits()">-->
-                <!--<p>{{ commit }}</p>-->
-            <!--</div>-->
+        {{ githubAccounts }}
+        <div v-for="item in githubAccounts" class="github-names">
+            <p>Github: {{ item.name }}</p>
+           <!-- <div v-for="commit in getCommits()">
+                <p>{{ commit }}</p>
+            </div> -->
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
