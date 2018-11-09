@@ -3,5 +3,6 @@
 }
 
 .github-commits{
-
+    border: 1px black solid;
+    background-color: #777777;
 }

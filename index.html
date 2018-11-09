@@ -3,28 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>github-ynov-vue</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css"/>
+    <script src="bootstrap-4/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div id="app">
        <h1>Application Github Ynov</h1>
-        <div class="filters">
+        <div class="">
+            <div v-for="name in names">
+<!--
+                <input value="name"/>
+-->
+            </div>
+
             <!-- choose dev -->
             <!-- <input> -->
             <div>
-                <!-- Date Picker -->
+                <label for="startDate">Start Date</label>
+                <input type="date" name="startDate"/>
+                <label for="endDate">End Date</label>
+                <input type="date" name="endDate"/>
+
             </div>
         </div>
-        <div v-for="item in names" class="github-names">
-            <p>Github: {{ item }}</p>
-           <div v-for="commit in getCommits(item)">
-                <p>{{ commit }}</p>
+
+        <div v-for="user in usersSelected" class="container github-names">
+            <p>Github: {{ user.name }}</p>
+            <button onclick="">hide</button>
+            <div v-for="commit in user.commit" class="container github-commits">
+                <p>date: {{ commit.commit.author.date }}</p>
+                <p>message: {{ commit.commit.message }}</p>
+                <a :href="commit.html_url">Go to commit</a>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
